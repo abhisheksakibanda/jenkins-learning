@@ -1,3 +1,3 @@
 # jenkins-learning
 
-Test Repo to verify Jenkins connecting to public Repos in GitHub
+Test Repo to verify Jenkins connecting to public Repos in GitHub over HTTPS
