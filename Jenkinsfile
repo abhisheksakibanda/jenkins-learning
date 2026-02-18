@@ -1,22 +1,22 @@
 pipeline {
-  agent { label 'linux' }
-
-  options {
-    skipDefaultCheckout(true)
-  }
+  agent any
 
   stages {
-    stage('Checkout') {
+    stage('Docker Sanity') {
       steps {
-        deleteDir()
-        checkout scm
+        sh 'docker version'
+        sh 'docker ps'
       }
     }
     
-    stage('Run Script') {
+    stage('Run inside Container') {
       steps {
-        sh 'chmod +x hello.sh && ./hello.sh'
-        sh 'ls -la'
+        scripts {
+          docker.image('python:3.12-slim').inside {
+            sh 'python3 --version'
+            sh 'python -c "print(\'Hello from inside the Docker Container\')"'
+          }
+        }
       }
     }
   }
