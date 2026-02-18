@@ -1,10 +1,9 @@
 pipeline {
-  agent any
+  agent { label 'controller' }
 
   stages {
     stage('Docker Sanity') {
       steps {
-        deleteDir()
         sh 'docker version'
         sh 'docker ps'
       }
