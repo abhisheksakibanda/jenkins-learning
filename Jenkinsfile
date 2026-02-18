@@ -1,23 +1,23 @@
 pipeline {
-    agent any
+  agent any
 
-    options {
-        skipDefaultCheckout(true)
+  options {
+    skipDefaultCheckout(true)
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        deleteDir()
+        checkout scm
+      }
     }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                deleteDir()
-                checkout scm
-            }
-        }
-
-        stage('Run Script') {
-            steps {
-                sh 'chmod +x hello.sh && ./hello.sh'
-                sh 'ls -la'
-            }
-        }
+    
+    stage('Run Script') {
+      steps {
+        sh 'chmod +x hello.sh && ./hello.sh'
+        sh 'ls -la'
+      }
     }
+  }
 }
