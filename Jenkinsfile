@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                deleteDir()
                 checkout scm
-                sh 'ls -la'
             }
         }
 
@@ -17,6 +17,7 @@ pipeline {
             steps {
                 sh 'chmod +x hello.sh'
                 sh './hello.sh'
+                sh 'ls -la'
             }
         }
     }
