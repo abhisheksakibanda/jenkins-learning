@@ -11,7 +11,7 @@ pipeline {
     
     stage('Run inside Container') {
       steps {
-        scripts {
+        script {
           docker.image('python:3.12-slim').inside {
             sh 'python3 --version'
             sh 'python -c "print(\'Hello from inside the Docker Container\')"'
