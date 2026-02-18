@@ -19,12 +19,5 @@ pipeline {
                 sh './hello.sh'
             }
         }
-
-        stage('Create Local File') {
-            steps {
-                sh 'echo "I am not tracked by git" > local.txt'
-                sh 'ls -la'
-            }
-        }
     }
 }
