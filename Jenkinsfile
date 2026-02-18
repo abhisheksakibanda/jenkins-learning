@@ -4,6 +4,7 @@ pipeline {
   stages {
     stage('Docker Sanity') {
       steps {
+        deleteDir()
         sh 'docker version'
         sh 'docker ps'
       }
